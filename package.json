@@ -1,0 +1,11 @@
+{
+  "name": "social-blogs",
+  "version": "1.0.0",
+  "description": "backend project similar to idea of facebook of posts, comments, likes and more.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sami",
+  "license": "ISC"
+}
