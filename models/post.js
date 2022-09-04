@@ -1,9 +1,9 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const PostSchema = new mongoose.Schema({
-    title: {type: string, required: true},
-    text: { type: string, required: true },
-    userId: { type: mongoose.Schema.Types.ObjectId, required: true }
+const postSchema = new mongoose.Schema({
+    title: {type: String, required: true},
+    text: { type: String, required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' }
 })
 
-export const Post = mongoose.model('Post')
+export default mongoose.model('Post', postSchema)
