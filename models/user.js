@@ -10,4 +10,10 @@ const userSchema = mongoose.Schema({
     posts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
 })
 
+userSchema.pre('save', function(next) {
+    let fullName = [this.firstName, this.lastName].filter(Boolean).join(' ')
+    this.fullName = fullName;
+    next()
+})
+
 export default mongoose.model('User', userSchema)
