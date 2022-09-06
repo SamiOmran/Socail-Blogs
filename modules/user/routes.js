@@ -5,6 +5,7 @@ import userValidator from './validator.js'
 const router = express.Router()
 
 router.get('/', controller.getAllusers)
-router.post('/', userValidator, controller.createUser)
+router.post('/', controller.createUser)
+router.get('/:id', controller.getUserById)
 
 export default router
