@@ -1,9 +1,11 @@
 import { validationResult } from 'express-validator'
-import rules from '../modules/user/validator'
 
-export default function validate(req, res, next) {
+export default function validate(rules) {
     return [...rules, async (req, res, next) => {
-        
-    }
-    ]
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ validation_errors: errors.array() })
+        }
+        next()
+    }]
 }
