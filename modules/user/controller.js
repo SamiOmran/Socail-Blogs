@@ -14,3 +14,13 @@ export const createUser = async (req, res) => {
         console.log(err);
     }
 }
+
+export const getUserById = async (req, res) => {
+    try {
+        const user = await service.getUserById(req.params.id)
+       return res.send(user)
+    } catch (err) {
+        return res.status(400).json({message:"Invalid ID"});
+    }
+}
+
