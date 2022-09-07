@@ -24,3 +24,14 @@ export const getUserById = async (req, res) => {
     }
 }
 
+export const updateUser = async (req, res) => {
+    try {
+       // const {email, password, firstName, lastName, age} = req.body
+       const updatedUser = req.body
+        const user = await service.updateUser(req.params.id, updatedUser)
+       return res.send(user)
+    } catch (err) {
+        return res.status(400).json({message:"Invalid ID"});
+    }
+}
+

@@ -16,4 +16,10 @@ userSchema.pre('save', function(next) {
     next()
 })
 
+userSchema.pre('updateOne', function(next) {
+    let fullName = [this.firstName, this.lastName].filter(Boolean).join(' ')
+    this.fullName = fullName;
+    next()
+})
+
 export default mongoose.model('User', userSchema)
