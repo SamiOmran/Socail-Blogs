@@ -14,3 +14,16 @@ export const createUser = async (req, res) => {
         console.log(err);
     }
 }
+
+export const deleteUserById = async (req, res) => {
+    try {
+        if (await service.deleteUserById(req.params.id)) {
+            return res.status(200).json({ message: 'User deleted successfully' })
+        }
+        else
+            return res.status(404).json({ message: 'User not found' })
+    } catch (error) {
+        console.log('errro thrown', error);
+        return res.status(400).json({ message: 'Invalid Id' })
+    }
+}
