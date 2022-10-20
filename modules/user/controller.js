@@ -2,7 +2,19 @@ import User from '../../models/user.js'
 import * as service from './service.js'
 
 export const getAllusers = async (req, res) => {
-    return res.send(await User.find());
+    const allUsers = await User.find()
+    let message = ''
+    let status = 0
+
+    if (allUsers.length === 0) {
+        message = 'No users were found'
+        status = 404;
+    } else {
+        message = 'Successfully found users'
+        status = 200;
+    }
+    
+    return res.status(status).json({message, data: allUsers});
 }
 
 export const createUser = async (req, res) => {
