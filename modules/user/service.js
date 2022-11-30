@@ -13,3 +13,9 @@ export const getUserById = async (id) => {
 export const getUserByEmail = async(email) => {
     return await User.getUserByEmail(email)
 }
+
+
+export const updateUser = async (id, updatedUser) => {
+    var userId = mongoose.Types.ObjectId(id);
+    return await User.findByIdAndUpdate(userId, updatedUser)
+}
